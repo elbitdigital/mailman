@@ -1,23 +1,12 @@
 <?php
 
-$/* Loading Dotenv*/
-
-require("../dotenv/src/Dotenv.php");
-require("../dotenv/src/Loader.php");
-require("../dotenv/src/Validator.php");
-
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-
-/* --- */
-
 header('Content-Type: application/json');
 
-header("Access-Control-Allow-Origin: *");
+//header("Access-Control-Allow-Origin: *");
 
 if (isset($_SERVER['HTTP_ORIGIN'])) {
 	header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-	header("Access-Control-Allow-Origin: *");
+	//header("Access-Control-Allow-Origin: *");
 	header('Access-Control-Allow-Credentials: true');
 	header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 }
@@ -31,6 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 	exit(0);
 }
 
+/* Loading Dotenv */
+
+require("../dotenv/src/Dotenv.php");
+require("../dotenv/src/Loader.php");
+require("../dotenv/src/Validator.php");
+
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
+/* --- */
+
 require '../PHPMailer/PHPMailerAutoload.php';
 require '../Response.php';
 
@@ -43,7 +43,7 @@ class CheckResponse extends Response {
 	public $cCity;
 	public $cMessage;
 
-	private $mailer;
+	protected $mailer;
 
 	/**
 	 * Response constructor.
