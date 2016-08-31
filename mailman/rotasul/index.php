@@ -69,7 +69,7 @@ $mailer->isSMTP();
 $mailer->Host = 'smtp.umbler.com';
 $mailer->SMTPAuth = true;
 $mailer->Username = 'mailman@service.elbit.com.br';
-$mailer->Password = 'eo7Kpvp[*F3';
+$mailer->Password = 'cT}MSk/36dj';
 $mailer->SMTPSecure = 'tls';
 $mailer->Port = 587;
 
