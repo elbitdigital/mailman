@@ -1,5 +1,8 @@
 <?php
 
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
 header('Content-Type: application/json');
 
 header("Access-Control-Allow-Origin: *");
@@ -68,13 +71,13 @@ $mailer->CharSet = 'UTF-8';
 $mailer->isSMTP();
 $mailer->Host = 'smtp.umbler.com';
 $mailer->SMTPAuth = true;
-$mailer->Username = 'mailman@service.elbit.com.br';
-$mailer->Password = 'cT}MSk/36dj';
+$mailer->Username = $_ENV['MAILMAN_EMAIL'];
+$mailer->Password = $_ENV['MAILMAN_PASS'];
 $mailer->SMTPSecure = 'tls';
 $mailer->Port = 587;
 
 // set from, to and carbon copy (hidden)
-$mailer->setFrom('mailman@service.elbit.com.br', 'Checker - MailMan');
+$mailer->setFrom($_ENV['MAILMAN_EMAIL'], 'Checker - MailMan');
 //$mailer->addAddress('joseeduardobarros@gmail.com', 'Eduardo');    // Send to Developer (test)
 $mailer->addAddress('cristiano@elbit.com.br', 'Cristiano');       // Send to Developer (test)
 //$mailer->addAddress('_email', '_nome');
