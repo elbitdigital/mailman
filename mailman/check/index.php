@@ -1,7 +1,15 @@
 <?php
 
+$/* Loading Dotenv*/
+
+require("../dotenv/src/Dotenv.php");
+require("../dotenv/src/Loader.php");
+require("../dotenv/src/Validator.php");
+
 $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
+
+/* --- */
 
 header('Content-Type: application/json');
 
